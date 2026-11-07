@@ -16,7 +16,13 @@ export default function ProfileCard() {
       {!isAboutPage && (
         <div className="block lg:hidden p-2.5 sm:p-3 rounded-2xl bg-card/80 dark:bg-zinc-900/60 backdrop-blur-xl border border-border shadow-sm animate-fade-in-up">
           <div className="flex items-center justify-between gap-3">
-            <Link href="/about" className="flex items-center gap-2.5 min-w-0 group">
+            <Link
+              href="/about"
+              prefetch={true}
+              scroll={false}
+              onClick={() => window.scrollTo({ top: 0, behavior: "instant" })}
+              className="flex items-center gap-2.5 min-w-0 group"
+            >
               <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-border bg-zinc-100 dark:bg-zinc-800 p-0.5 group-hover:scale-105 transition-transform">
                 <div className="relative h-full w-full overflow-hidden rounded-full">
                   <Image
@@ -42,6 +48,9 @@ export default function ProfileCard() {
 
             <Link
               href="/about"
+              prefetch={true}
+              scroll={false}
+              onClick={() => window.scrollTo({ top: 0, behavior: "instant" })}
               className="group/btn shrink-0 flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-secondary text-foreground hover:bg-foreground hover:text-background transition-all duration-200 border border-border/60"
             >
               <span>{tHeader("about")}</span>
@@ -60,7 +69,7 @@ export default function ProfileCard() {
 
       {/* Full ProfileCard (Always on desktop; on mobile only on About page) */}
       <div
-        className={`card sticky top-24 z-20 animate-fade-in-up ${
+        className={`card z-20 animate-fade-in-up ${
           isAboutPage ? "block" : "hidden lg:block"
         }`}
       >

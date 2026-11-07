@@ -2,13 +2,15 @@
 
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
-import { Link, usePathname } from "@/i18n/routing";
+import { Link, usePathname, useRouter } from "@/i18n/routing";
 
 export default function BottomNav() {
   const pathname = usePathname();
+  const router = useRouter();
   const t = useTranslations("header");
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [optimisticPath, setOptimisticPath] = useState<string | null>(null);
 
   const navLinks = [
     {
@@ -89,6 +91,21 @@ export default function BottomNav() {
     },
   ];
 
+  // Set scroll restoration to manual and prefetch all routes for instant transitions
+  useEffect(() => {
+    if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
+    navLinks.forEach((link) => {
+      try {
+        router.prefetch(link.href);
+      } catch {
+        // ignore
+      }
+    });
+  }, [router]);
+
   // Auto-hide when scrolling down, show when scrolling up
   useEffect(() => {
     const handleScroll = () => {
@@ -105,11 +122,19 @@ export default function BottomNav() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  // Always reset to top and reveal nav when switching page
+  // Always reset to top, reset scroll state, and clear optimistic tab when route updates
   useEffect(() => {
     setIsVisible(true);
+    setLastScrollY(0);
+    setOptimisticPath(null);
     window.scrollTo({ top: 0, behavior: "instant" });
+    const rafId = requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    });
+    return () => cancelAnimationFrame(rafId);
   }, [pathname]);
+
+  const currentPath = optimisticPath ?? pathname;
 
   return (
     <nav
@@ -125,18 +150,23 @@ export default function BottomNav() {
         <div className="pointer-events-none absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-black/10 dark:via-white/20 to-transparent" />
 
         {navLinks.map((link) => {
-          const isActive = pathname === link.href;
+          const isActive = currentPath === link.href;
           return (
             <Link
               key={link.href}
               href={link.href}
+              prefetch={true}
+              scroll={false}
               onClick={(e) => {
-                if (isActive) {
+                if (pathname === link.href) {
                   e.preventDefault();
                   window.scrollTo({ top: 0, behavior: "smooth" });
+                } else {
+                  setOptimisticPath(link.href);
+                  window.scrollTo({ top: 0, behavior: "instant" });
                 }
               }}
-              className={`relative flex items-center transition-all duration-300 rounded-full outline-none focus:outline-none select-none ${
+              className={`relative flex items-center transition-all duration-200 rounded-full outline-none focus:outline-none select-none ${
                 isActive
                   ? "bg-neutral-900 text-white shadow-sm dark:bg-white/[0.12] dark:text-white dark:border dark:border-white/[0.16] dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)] px-3.5 py-2 font-semibold text-xs gap-1.5 scale-100"
                   : "text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100 dark:text-zinc-400 dark:hover:text-zinc-200 dark:hover:bg-white/[0.05] p-2.5 scale-95 active:scale-90"

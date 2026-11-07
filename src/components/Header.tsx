@@ -61,7 +61,13 @@ export default function Header() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between gap-4">
           {/* Logo - Left Side */}
-          <Link href="/" className="flex items-center gap-2.5 w-auto md:w-48 relative z-20 outline-none focus:outline-none select-none group">
+          <Link
+            href="/"
+            prefetch={true}
+            scroll={false}
+            onClick={() => window.scrollTo({ top: 0, behavior: "instant" })}
+            className="flex items-center gap-2.5 w-auto md:w-48 relative z-20 outline-none focus:outline-none select-none group"
+          >
             <div className="h-8 w-8 rounded-lg bg-foreground text-background flex items-center justify-center font-bold text-xs tracking-wider shrink-0 shadow-sm border border-border/40 group-hover:scale-105 transition-transform duration-200">
               HP
             </div>
@@ -78,6 +84,16 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  prefetch={true}
+                  scroll={false}
+                  onClick={(e) => {
+                    if (isActive) {
+                      e.preventDefault();
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    } else {
+                      window.scrollTo({ top: 0, behavior: "instant" });
+                    }
+                  }}
                   className={`relative py-1 text-sm transition-all duration-300 group outline-none focus:outline-none select-none ${
                     isActive
                       ? "text-foreground font-semibold"

@@ -204,10 +204,7 @@ body {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
+
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
