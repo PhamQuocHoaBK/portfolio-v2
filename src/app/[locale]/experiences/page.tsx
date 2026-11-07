@@ -26,26 +26,24 @@ export default function ExperiencesPage() {
     <div className="space-y-8 animate-fade-in-up">
       <div className="card bg-card/50 backdrop-blur-xl border-border p-4 md:p-8 relative overflow-hidden min-h-[70vh]">
         {/* Ambient Glow */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px] -mr-32 -mt-32 pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-500/5 rounded-full blur-[80px] -ml-32 -mb-32 pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-64 h-64 bg-foreground/5 rounded-full blur-[80px] -mr-32 -mt-32 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-foreground/5 rounded-full blur-[80px] -ml-32 -mb-32 pointer-events-none"></div>
 
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 md:mb-12 text-primary relative z-10">
+        <h2 className="text-2xl font-bold tracking-tight mb-8 text-foreground relative z-10">
           {t("title")}
         </h2>
 
-        <div className="relative border-l-2 border-primary/30 ml-2 md:ml-4 space-y-8 md:space-y-12 z-10 pb-8">
+        <div className="relative border-l border-border ml-2 md:ml-4 space-y-8 md:space-y-10 z-10 pb-8">
           {experiences.map((exp, idx) => (
-            <div key={idx} className="relative pl-5 md:pl-10 pb-2">
+            <div key={idx} className="relative pl-5 md:pl-8 pb-2">
               {/* Timeline Node Center */}
-              <div className="absolute -left-[9px] top-6 md:top-8 flex h-4 w-4 items-center justify-center rounded-full bg-background outline outline-4 outline-background">
-                <div className="h-2.5 w-2.5 rounded-full bg-primary shadow-[0_0_8px_rgba(99,102,241,0.8)]" />
-              </div>
+              <div className="absolute -left-[5px] top-6 md:top-7 flex h-2.5 w-2.5 items-center justify-center rounded-full bg-foreground" />
 
               {/* Experience Card */}
-              <div className="group flex flex-col gap-4 rounded-2xl bg-secondary/10 p-4 md:p-8 border border-border/30 hover:border-primary/40 hover:bg-secondary/20 transition-all duration-500 hover:shadow-lg hover:shadow-primary/5">
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-border/30 pb-4">
+              <div className="group flex flex-col gap-4 rounded-2xl bg-secondary/20 p-5 md:p-7 border border-border/60 hover:border-border hover:bg-secondary/30 transition-all duration-300">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-border/40 pb-4">
                   <div className="flex flex-col">
-                    <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+                    <h3 className="text-lg font-bold tracking-tight text-foreground">
                       {exp.website ? (
                         <a
                           href={exp.website}
@@ -59,22 +57,22 @@ export default function ExperiencesPage() {
                         exp.company
                       )}
                     </h3>
-                    <h4 className="text-lg font-semibold text-foreground/70 mt-1">
+                    <h4 className="text-sm font-medium text-foreground/60 mt-0.5">
                       {exp.role}
                     </h4>
                   </div>
-                  <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-semibold tracking-wide whitespace-nowrap self-start md:self-auto">
+                  <div className="inline-flex items-center px-3 py-1 rounded-full bg-secondary border border-border/60 text-foreground/75 text-xs font-medium tracking-wide whitespace-nowrap self-start md:self-auto">
                     {exp.period}
                   </div>
                 </div>
 
-                <ul className="space-y-3 mt-2">
+                <ul className="space-y-2.5 mt-1">
                   {exp.points.map((point, i) => (
                     <li
                       key={i}
-                      className="flex items-start gap-3 md:gap-4 text-foreground/80 leading-relaxed text-left md:text-[1.05rem]"
+                      className="flex items-start gap-2.5 text-foreground/75 leading-relaxed text-left text-sm"
                     >
-                      <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/60 group-hover:bg-primary transition-colors"></span>
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-foreground/30 group-hover:bg-foreground/60 transition-colors"></span>
                       <span>{point}</span>
                     </li>
                   ))}

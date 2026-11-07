@@ -2,15 +2,72 @@
 
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { Link, usePathname } from "@/i18n/routing";
 
 export default function ProfileCard() {
   const t = useTranslations("profile");
+  const tHeader = useTranslations("header");
+  const pathname = usePathname();
+  const isAboutPage = pathname === "/about" || pathname === "/";
+
   return (
-    <div className="card sticky top-24 z-20 animate-fade-in-up">
+    <>
+      {/* Mobile Mini Bar (Only shown on mobile when NOT on about page) */}
+      {!isAboutPage && (
+        <div className="block lg:hidden p-2.5 sm:p-3 rounded-2xl bg-card/80 dark:bg-zinc-900/60 backdrop-blur-xl border border-border shadow-sm animate-fade-in-up">
+          <div className="flex items-center justify-between gap-3">
+            <Link href="/about" className="flex items-center gap-2.5 min-w-0 group">
+              <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-border bg-zinc-100 dark:bg-zinc-800 p-0.5 group-hover:scale-105 transition-transform">
+                <div className="relative h-full w-full overflow-hidden rounded-full">
+                  <Image
+                    src="/avt.png?v=1"
+                    alt="Profile Avatar"
+                    fill
+                    className="object-cover"
+                    sizes="40px"
+                    priority
+                    unoptimized
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col min-w-0 text-left">
+                <span className="text-sm font-bold tracking-tight text-foreground truncate group-hover:text-primary transition-colors">
+                  {t("name")}
+                </span>
+                <span className="text-[11px] text-foreground/60 truncate">
+                  {t("title")}
+                </span>
+              </div>
+            </Link>
+
+            <Link
+              href="/about"
+              className="group/btn shrink-0 flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-secondary text-foreground hover:bg-foreground hover:text-background transition-all duration-200 border border-border/60"
+            >
+              <span>{tHeader("about")}</span>
+              <svg
+                className="w-3 h-3 opacity-60 group-hover/btn:opacity-100 group-hover/btn:translate-x-0.5 transition-all"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      )}
+
+      {/* Full ProfileCard (Always on desktop; on mobile only on About page) */}
+      <div
+        className={`card sticky top-24 z-20 animate-fade-in-up ${
+          isAboutPage ? "block" : "hidden lg:block"
+        }`}
+      >
       {/* Cover Image */}
-      <div className="relative -m-6 mb-0 h-32 overflow-hidden rounded-t-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 flex justify-center p-4">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="relative z-10 font-mono text-white/90 text-sm md:text-base selection:bg-white/30">
+      <div className="relative -m-6 mb-0 h-32 overflow-hidden rounded-t-2xl bg-gradient-to-b from-zinc-800 via-zinc-900 to-zinc-950 dark:from-zinc-900 dark:via-zinc-950 dark:to-black border-b border-border/50 flex justify-center p-4">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent"></div>
+        <div className="relative z-10 font-mono text-zinc-300 text-sm md:text-base selection:bg-white/20">
           <span className="animate-typing inline-block">{t("welcome")}</span>
         </div>
       </div>
@@ -19,7 +76,7 @@ export default function ProfileCard() {
       <div className="relative mt-4 flex flex-col items-center text-center">
         {/* Avatar */}
         <div className="relative -mt-20 mb-4">
-          <div className="relative h-32 w-32 overflow-hidden rounded-full border-4 border-card bg-gradient-to-br from-indigo-500 to-purple-600 p-1 animate-pulse-glow">
+          <div className="relative h-32 w-32 overflow-hidden rounded-full border-4 border-card bg-zinc-200 dark:bg-zinc-800 p-0.5 shadow-xl">
             <div className="relative h-full w-full overflow-hidden rounded-full bg-card">
               <Image
                 src="/avt.png?v=1"
@@ -32,16 +89,15 @@ export default function ProfileCard() {
               />
             </div>
           </div>
-          <div className="absolute bottom-2 right-2 h-6 w-6 rounded-full border-4 border-card bg-green-500"></div>
         </div>
 
         {/* Name & Title */}
-        <h1 className="text-2xl font-bold text-foreground">{t("name")}</h1>
-        <p className="mt-2 text-sm font-semibold text-foreground/70">
+        <h1 className="text-xl font-bold tracking-tight text-foreground">{t("name")}</h1>
+        <p className="mt-1 text-xs font-semibold text-foreground/60 tracking-wider uppercase">
           {t("title")}
         </p>
-        <div className="my-3 w-12 h-[2px] bg-primary/20 rounded-full"></div>
-        <p className="text-sm font-medium text-foreground/60 italic">
+        <div className="my-3 w-10 h-[1.5px] bg-border rounded-full"></div>
+        <p className="text-xs text-foreground/60 leading-relaxed italic max-w-[260px]">
           &ldquo;{t("quote")}&rdquo;
         </p>
 
@@ -49,7 +105,7 @@ export default function ProfileCard() {
         <div className="mt-8 flex w-full flex-col gap-5 px-3 md:px-6 text-left">
           {/* Email */}
           <div className="flex items-center gap-3 group">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-secondary/20 text-primary/60 transition-colors group-hover:text-primary">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-secondary/20 text-foreground/50 transition-colors group-hover:text-foreground">
               <svg
                 className="h-4 w-4"
                 fill="none"
@@ -76,7 +132,7 @@ export default function ProfileCard() {
 
           {/* Phone */}
           <div className="flex items-center gap-3 group">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-secondary/20 text-primary/60 transition-colors group-hover:text-primary">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-secondary/20 text-foreground/50 transition-colors group-hover:text-foreground">
               <svg
                 className="h-4 w-4"
                 fill="none"
@@ -103,7 +159,7 @@ export default function ProfileCard() {
 
           {/* Location */}
           <div className="flex items-center gap-3 group">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-secondary/20 text-primary/60 transition-colors group-hover:text-primary">
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-secondary/20 text-foreground/50 transition-colors group-hover:text-foreground">
               <svg
                 className="h-4 w-4"
                 fill="none"
@@ -162,5 +218,6 @@ export default function ProfileCard() {
         </div>
       </div>
     </div>
-  );
+  </>
+);
 }

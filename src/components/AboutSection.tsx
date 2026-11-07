@@ -196,35 +196,34 @@ export default function AboutSection() {
 
   return (
     <div className="space-y-8 animate-fade-in-up">
-      <div className="card bg-card/50 backdrop-blur-xl border-border p-8 relative overflow-hidden">
+      <div className="card bg-card/50 backdrop-blur-xl border-border p-6 sm:p-8 relative overflow-hidden">
         {/* Background Decorations */}
-        <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -mr-16 -mt-16"></div>
-        <div className="absolute bottom-0 left-0 w-32 h-32 bg-indigo-500/5 rounded-full blur-3xl -ml-16 -mb-16"></div>
+        <div className="absolute top-0 right-0 w-32 h-32 bg-foreground/5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-32 h-32 bg-foreground/5 rounded-full blur-3xl -ml-16 -mb-16 pointer-events-none"></div>
 
         {/* About Title */}
-        <h2 className="text-3xl font-bold mb-6 text-primary">{t("title")}</h2>
+        <h2 className="text-2xl font-bold tracking-tight mb-4 text-foreground">{t("title")}</h2>
 
         {/* Biography Description */}
-        <div className="prose dark:prose-invert max-w-none mb-12 text-lg text-foreground/80 leading-relaxed text-left">
+        <div className="max-w-none mb-10 text-[15px] sm:text-base text-foreground/75 leading-relaxed text-left">
           {t.rich("description", {
-            p: (chunks) => <p className="mb-4 last:mb-0">{chunks}</p>,
-            highlight: (chunks) => <span className="font-bold">{chunks}</span>,
+            p: (chunks) => <p className="mb-3.5 last:mb-0">{chunks}</p>,
+            highlight: (chunks) => <span className="font-semibold text-foreground">{chunks}</span>,
             link: (chunks) => (
               <a
                 href="https://hcmut.edu.vn/"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="font-medium text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground transition-colors cursor-pointer"
               >
-                <span className="font-bold hover:text-primary transition-colors cursor-pointer">
-                  {chunks}
-                </span>
+                {chunks}
               </a>
             ),
           })}
         </div>
 
         {/* Technical Skills Section */}
-        <h2 className="text-3xl font-bold mb-6 text-primary">{t("skills")}</h2>
+        <h2 className="text-xl font-bold tracking-tight mb-4 text-foreground">{t("skills")}</h2>
 
         <div className="relative w-full overflow-hidden rounded-2xl border border-primary/20 bg-card/30 backdrop-blur-sm">
           {/* Animated Stars Background - Shared */}
@@ -249,7 +248,7 @@ export default function AboutSection() {
             {SKILLS.map((skill, idx) => (
               <div
                 key={idx}
-                className="flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-card/40 border border-primary/10 backdrop-blur-md animate-cosmic hover:bg-primary/10 transition-colors"
+                className="flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-card/40 border border-border/50 backdrop-blur-md animate-cosmic hover:bg-card/70 transition-colors"
                 style={
                   {
                     "--float-duration": skill.dur,
@@ -260,10 +259,10 @@ export default function AboutSection() {
                 <span className="w-8 h-8 mb-1 flex items-center justify-center">
                   {skill.icon}
                 </span>
-                <span className="text-sm font-bold opacity-90 text-center">
+                <span className="text-sm font-bold opacity-90 text-center text-foreground">
                   {skill.name}
                 </span>
-                <div className="absolute inset-0 rounded-xl bg-primary/5 blur-md -z-10"></div>
+                <div className="absolute inset-0 rounded-xl bg-foreground/5 blur-md -z-10"></div>
               </div>
             ))}
           </div>

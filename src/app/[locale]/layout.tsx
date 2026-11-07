@@ -9,6 +9,7 @@ export function generateStaticParams() {
 
 import Header from "@/components/Header";
 import ProfileCard from "@/components/ProfileCard";
+import BottomNav from "@/components/BottomNav";
 import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({
@@ -47,7 +48,7 @@ export default async function LocaleLayout({
     <NextIntlClientProvider messages={messages} locale={locale}>
       <div className="min-h-screen bg-background text-foreground">
         <Header />
-        <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <main className="mx-auto max-w-7xl px-4 pt-6 pb-24 sm:px-6 sm:py-8 lg:px-8">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
             {/* Sidebar */}
             <aside className="lg:col-span-4 lg:sticky lg:top-24 lg:self-start z-20">
@@ -58,6 +59,7 @@ export default async function LocaleLayout({
             <div className="lg:col-span-8 space-y-6">{children}</div>
           </div>
         </main>
+        <BottomNav />
       </div>
     </NextIntlClientProvider>
   );

@@ -52,9 +52,9 @@ export default function ContactPage() {
     <div className="space-y-8 animate-fade-in-up">
       <div className="card p-8 bg-card/50 backdrop-blur-xl border-border relative overflow-hidden">
         {/* Ambient Glow */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px] -mr-32 -mt-32 pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-500/5 rounded-full blur-[80px] -ml-32 -mb-32 pointer-events-none"></div>
-        <h2 className="text-3xl font-bold mb-2 bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-foreground/5 rounded-full blur-[80px] -mr-32 -mt-32 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-foreground/5 rounded-full blur-[80px] -ml-32 -mb-32 pointer-events-none"></div>
+        <h2 className="text-2xl font-bold tracking-tight mb-2 text-foreground">
           {t("title")}
         </h2>
         <p className="text-muted-foreground mb-8 text-sm">{t("description")}</p>
