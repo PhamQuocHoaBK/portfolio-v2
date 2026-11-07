@@ -1,0 +1,129 @@
+{
+    "header": {
+        "home": "Home",
+        "about": "About",
+        "portfolio": "Portfolio",
+        "contact": "Contact",
+        "experiences": "Experiences"
+    },
+    "hero": {
+        "greeting": "Hi, I'm",
+        "title": "Front End Developer",
+        "description": "I build exceptional digital experiences that combine beautiful design with powerful functionality.",
+        "cta": "View My Work",
+        "contact": "Get In Touch"
+    },
+    "about": {
+        "title": "About Me",
+        "skills": "Technical Skills",
+        "description": "<p>Hello, I’m <highlight>Pham Quoc Hoa</highlight>, a software developer based in <highlight>Vietnam</highlight>. I graduated with a degree in <highlight>Computer Engineering</highlight> from <link>Ho Chi Minh City University of Technology</link>. I have over <highlight>2 years of professional experience</highlight> in software development, specializing in <highlight>Front End development</highlight> for both <highlight>web and mobile applications</highlight>.</p><p>Through real-world projects, I have gained hands-on experience in building web and mobile applications, focusing on <highlight>performance, usability, and scalability</highlight> to deliver <highlight>user-centered products</highlight>.</p>"
+    },
+    "projects": {
+        "title": "Featured Projects",
+        "viewProject": "View Project",
+        "viewCode": "View Code",
+        "members": "members",
+        "responsibilities": "Responsibilities",
+        "items": {
+            "myhers": {
+                "title": "MYHer's Community",
+                "description": "A social app for real estate communities, chat, and home repair requests.",
+                "responsibilities": "Developed chat functionality, blog writing features, and home repair order placement."
+            },
+            "wisebuddy": {
+                "title": "WISE Buddy",
+                "description": "The AI app for English learning and speaking. Users can practice daily communication and improve reflexes by conversing with various AI characters, providing a natural and interactive learning experience.",
+                "responsibilities": "Developed message chat and voice chat features for English learning through AI conversation."
+            },
+            "indochina": {
+                "title": "Indochina Enterprises",
+                "description": "The app is the ultimate shopping app designed for wholesale customers such as restaurants, hotels, and food stalls. We built a B2B wholesale app enabling businesses to place orders on credit, manage debt through reminders and payments, and handle preorders for unavailable items.",
+                "responsibilities": "Developed a wholesale platform with credit options, handling order placement, payments, and tracking."
+            },
+            "camxu": {
+                "title": "CamXu",
+                "description": "The app supports for learning Chinese, focusing on developing all 4 skills: listening, speaking, reading, writing. Features include: themed learning, multiple-choice tests, essay tests, audio recording tests.",
+                "responsibilities": "Developed many features: multiple-choice tests, audio learning, essay tests, audio recording tests, and themed learning modules for a comprehensive Chinese learning experience."
+            }
+        }
+    },
+    "contact": {
+        "title": "Get In Touch",
+        "description": "Feel free to reach out for collaborations or just a friendly hello",
+        "nameLabel": "Name",
+        "namePlaceholder": "Your Name",
+        "emailLabel": "Email",
+        "emailPlaceholder": "your@email.com",
+        "messageLabel": "Message",
+        "messagePlaceholder": "How can I help you?",
+        "send": "Send Message",
+        "sending": "Sending...",
+        "success": "Your message has been sent successfully!",
+        "error": "Failed to send message. Please try again.",
+        "invalidEmail": "Please enter a valid email address."
+    },
+    "common": {
+        "loading": "Loading...",
+        "error": "Something went wrong",
+        "retry": "Retry",
+        "lightMode": "Light Mode",
+        "darkMode": "Dark Mode"
+    },
+    "experiences": {
+        "title": "Experiences",
+        "zens": {
+            "company": "ZenS Company",
+            "website": "https://zen-s.com/",
+            "period": "07/2023 - Present",
+            "role": "Front End Developer",
+            "points": [
+                "Developed mobile applications using cross-platform technology (React Native) for both Android and iOS operating systems.",
+                "Published applications to the App Store and Google Play Store for end users.",
+                "Developed web applications.",
+                "Developed many features for a Chinese learning app (CamXu) including audio recording, multiple-choice, and essay tests.",
+                "Built a B2B wholesale shopping platform (Indochina Enterprises) with credit management, debt tracking, and automated payments.",
+                "Developed a social community app for real estate (MYHer's Community) with chat and service request features."
+            ]
+        },
+        "fpt": {
+            "company": "FPT Software Ho Chi Minh",
+            "website": "https://fptsoftware.com/about-us",
+            "period": "06/2022 - 09/2022",
+            "role": "Front End Developer Intern",
+            "points": [
+                "Analyzed customer requirements, created diagrams, and designed user interfaces.",
+                "Developed a student management web application."
+            ]
+        }
+    },
+    "profile": {
+        "welcome": "Welcome! Glad to have you here.",
+        "name": "Pham Quoc Hoa",
+        "title": "Front End Developer",
+        "quote": "I build mobile and web applications.",
+        "email": "Email:",
+        "phone": "Phone:",
+        "location": "Location:",
+        "locationValue": "Ho Chi Minh City, Vietnam"
+    },
+    "metadata": {
+        "title": "Pham Quoc Hoa | Front End Developer",
+        "description": "Front End Developer portfolio of Pham Quoc Hoa, specializing in React Native, React.js, and modern web/mobile development.",
+        "about": {
+            "title": "About Me | Pham Quoc Hoa",
+            "description": "Information about Pham Quoc Hoa, a software developer based in Vietnam."
+        },
+        "projects": {
+            "title": "Portfolio | Featured Projects",
+            "description": "Showcase of projects developed by Pham Quoc Hoa, including mobile and web applications."
+        },
+        "experiences": {
+            "title": "Experiences | Tech Career",
+            "description": "Professional journey and work history of Pham Quoc Hoa."
+        },
+        "contact": {
+            "title": "Contact Me | Get In Touch",
+            "description": "Contact Pham Quoc Hoa for collaborations or job inquiries."
+        }
+    }
+}

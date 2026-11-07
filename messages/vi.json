@@ -1,0 +1,127 @@
+{
+    "header": {
+        "home": "Trang chủ",
+        "about": "Giới thiệu",
+        "portfolio": "Portfolio",
+        "experiences": "Kinh nghiệm",
+        "contact": "Liên hệ"
+    },
+    "hero": {
+        "greeting": "Xin chào, tôi là",
+        "title": "Lập trình viên Front End",
+        "description": "Tôi xây dựng các trải nghiệm kỹ thuật số đặc biệt kết hợp thiết kế đẹp mắt với chức năng mạnh mẽ.",
+        "cta": "Xem công việc của tôi",
+        "contact": "Liên hệ ngay"
+    },
+    "about": {
+        "title": "Giới thiệu",
+        "skills": "Kỹ năng chuyên môn",
+        "description": "<p>Xin chào, tôi là <highlight>Phạm Quốc Hòa</highlight>, một lập trình viên phần mềm tại <highlight>Việt Nam</highlight>. Tôi tốt nghiệp ngành <highlight>Kỹ thuật Máy tính</highlight> tại <link>Đại học Bách Khoa TP.HCM</link>. Tôi có hơn <highlight>2 năm kinh nghiệm chuyên môn</highlight> trong phát triển phần mềm, chuyên về phát triển <highlight>Front End</highlight> cho cả <highlight>ứng dụng web và di động</highlight>.</p><p>Thông qua các dự án thực tế, tôi đã tích lũy được kinh nghiệm thực hành trong việc xây dựng các ứng dụng web và di động, tập trung vào <highlight>hiệu suất, khả năng sử dụng và khả năng mở rộng</highlight> để mang đến các sản phẩm lấy người dùng làm trung tâm.</p>"
+    },
+    "projects": {
+        "title": "Dự án nổi bật",
+        "viewProject": "Xem dự án",
+        "viewCode": "Xem mã nguồn",
+        "members": "thành viên",
+        "responsibilities": "Trách nhiệm",
+        "items": {
+            "myhers": {
+                "title": "MYHer's Community",
+                "description": "Ứng dụng mạng xã hội cho cộng đồng bất động sản, trò chuyện và yêu cầu sửa chữa nhà cửa.",
+                "responsibilities": "Phát triển tính năng trò chuyện, viết blog và đặt hàng sửa chữa nhà cửa."
+            },
+            "wisebuddy": {
+                "title": "WISE Buddy",
+                "description": "Ứng dụng AI học tiếng Anh và luyện nói. Người dùng có thể luyện giao tiếp hàng ngày và phản xạ bằng cách trò chuyện với các nhân vật AI khác nhau, mang lại trải nghiệm học tập tự nhiên và tương tác.",
+                "responsibilities": "Phát triển tính năng chat tin nhắn và chat thoại để học tiếng Anh qua hội thoại với AI."
+            },
+            "indochina": {
+                "title": "Indochina Enterprises",
+                "description": "Ứng dụng mua sắm tối ưu dành cho khách hàng bán buôn như nhà hàng, khách sạn và quán ăn. Xây dựng ứng dụng B2B cho phép doanh nghiệp đặt hàng trả chậm, quản lý nợ qua thông báo nhắc nhở và thanh toán, xử lý đặt hàng trước.",
+                "responsibilities": "Phát triển nền tảng bán buôn với các tùy chọn tín dụng, xử lý đặt hàng, thanh toán và theo dõi đơn hàng."
+            },
+            "camxu": {
+                "title": "CamXu",
+                "description": "Ứng dụng hỗ trợ học tiếng Trung, tập trung phát triển cả 4 kỹ năng: nghe, nói, đọc, viết. Các tính năng bao gồm: học theo chủ đề, trắc nghiệm, bài tập tự luận, kiểm tra ghi âm.",
+                "responsibilities": "Phát triển nhiều tính năng: bài thi trắc nghiệm, học qua âm thanh, bài thi tự luận, bài thi ghi âm và các mô-đun học theo chủ đề."
+            }
+        }
+    },
+    "contact": {
+        "title": "Liên hệ",
+        "description": "Hãy liên hệ để hợp tác hoặc chỉ để chào hỏi",
+        "nameLabel": "Tên của bạn",
+        "namePlaceholder": "Nhập tên của bạn",
+        "emailLabel": "Email",
+        "emailPlaceholder": "example@email.com",
+        "messageLabel": "Tin nhắn",
+        "messagePlaceholder": "Bạn cần tôi giúp gì?",
+        "send": "Gửi tin nhắn",
+        "sending": "Đang gửi...",
+        "success": "Tin nhắn của bạn đã được gửi thành công!",
+        "error": "Có lỗi xảy ra khi gửi tin nhắn. Vui lòng thử lại sau.",
+        "invalidEmail": "Vui lòng nhập địa chỉ email hợp lệ."
+    },
+    "common": {
+        "loading": "Đang tải...",
+        "error": "Đã xảy ra lỗi",
+        "retry": "Thử lại",
+        "lightMode": "Chế độ sáng",
+        "darkMode": "Chế độ tối"
+    },
+    "experiences": {
+        "title": "Kinh nghiệm làm việc",
+        "zens": {
+            "company": "ZenS Company",
+            "website": "https://zen-s.com/",
+            "period": "07/2023 - Hiện tại",
+            "role": "Front End Developer",
+            "points": [
+                "Phát triển các ứng dụng di động đa nền tảng (React Native) cho cả hệ điều hành Android và iOS.",
+                "Đăng tải các ứng dụng lên App Store và Google Play Store cho người dùng cuối.",
+                "Phát triển các ứng dụng web.",
+                "Phát triển một ứng dụng giáo dục, một nền tảng bán sỉ tích hợp thanh toán và một ứng dụng mạng xã hội cho cộng đồng bất động sản."
+            ]
+        },
+        "fpt": {
+            "company": "FPT Software  Ho Chi Minh",
+            "website": "https://fptsoftware.com/about-us",
+            "period": "06/2022 - 09/2022",
+            "role": "Thực tập sinh Front End Developer",
+            "points": [
+                "Phân tích yêu cầu khách hàng, tạo sơ đồ và thiết kế giao diện người dùng.",
+                "Phát triển ứng dụng web quản lý sinh viên."
+            ]
+        }
+    },
+    "profile": {
+        "welcome": "Chào mừng bạn đến đây!",
+        "name": "Phạm Quốc Hoà",
+        "title": "Lập trình viên Front End",
+        "quote": "Tôi xây dựng các ứng dụng web và di động.",
+        "email": "Email:",
+        "phone": "Điện thoại:",
+        "location": "Địa chỉ:",
+        "locationValue": "Tp Hồ Chí Minh, Việt Nam"
+    },
+    "metadata": {
+        "title": "Phạm Quốc Hòa | Lập trình viên Front End",
+        "description": "Portfolio của Phạm Quốc Hòa, chuyên gia phát triển ứng dụng di động và web Front End với React Native, React.js.",
+        "about": {
+            "title": "Về tôi | Phạm Quốc Hòa",
+            "description": "Thông tin về Phạm Quốc Hòa, lập trình viên phần mềm tại Việt Nam."
+        },
+        "projects": {
+            "title": "Portfolio | Dự án tiêu biểu",
+            "description": "Nơi trưng bày các dự án thực tế được phát triển bởi Phạm Quốc Hòa."
+        },
+        "experiences": {
+            "title": "Kinh nghiệm | Hành trình nghề nghiệp",
+            "description": "Lịch sử làm việc và quá trình phát triển chuyên môn của Phạm Quốc Hòa."
+        },
+        "contact": {
+            "title": "Liên hệ | Kết nối với tôi",
+            "description": "Liên hệ với Phạm Quốc Hòa để hợp tác hoặc hỗ trợ công việc."
+        }
+    }
+}
