@@ -51,7 +51,7 @@ export default function ProfileCard() {
               prefetch={true}
               scroll={false}
               onClick={() => window.scrollTo({ top: 0, behavior: "instant" })}
-              className="group/btn shrink-0 flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-secondary text-foreground hover:bg-foreground hover:text-background transition-all duration-200 border border-border/60"
+              className="group/btn shrink-0 flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-full bg-card border border-border text-foreground hover:bg-secondary transition-all duration-200 active:scale-95 shadow-sm"
             >
               <span>{tHeader("about")}</span>
               <svg

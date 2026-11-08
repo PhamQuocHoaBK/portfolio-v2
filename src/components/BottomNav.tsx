@@ -135,19 +135,32 @@ export default function BottomNav() {
   }, [pathname]);
 
   const currentPath = optimisticPath ?? pathname;
+  const activeIndex = Math.max(
+    0,
+    navLinks.findIndex((link) => link.href === currentPath)
+  );
 
   return (
     <nav
-      className={`md:hidden fixed bottom-5 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ease-out ${
+      className={`md:hidden fixed bottom-3 sm:bottom-3.5 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ease-out ${
         isVisible
           ? "translate-y-0 opacity-100 scale-100"
-          : "translate-y-24 opacity-0 scale-95 pointer-events-none"
+          : "translate-y-20 opacity-0 scale-95 pointer-events-none"
       }`}
       aria-label="Mobile Navigation"
     >
-      <div className="relative flex items-center gap-1 p-1.5 rounded-full bg-white/85 dark:bg-[#0a0a0c]/85 backdrop-blur-2xl backdrop-saturate-150 border border-black/[0.08] dark:border-white/[0.1] shadow-[0_12px_32px_rgba(0,0,0,0.12),inset_0_1px_0_0_rgba(255,255,255,0.8)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.8),inset_0_1px_0_0_rgba(255,255,255,0.1)]">
+      <div className="relative flex items-center p-0.5 rounded-full bg-white/85 dark:bg-[#0a0a0c]/85 backdrop-blur-2xl backdrop-saturate-150 border border-black/[0.08] dark:border-white/[0.1] shadow-[0_8px_24px_rgba(0,0,0,0.1),inset_0_1px_0_0_rgba(255,255,255,0.8)] dark:shadow-[0_16px_36px_rgba(0,0,0,0.7),inset_0_1px_0_0_rgba(255,255,255,0.1)] w-[272px] max-w-[calc(100vw-32px)]">
         {/* 1px Specular Top Light */}
         <div className="pointer-events-none absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-black/10 dark:via-white/20 to-transparent" />
+
+        {/* Sliding Pill Indicator */}
+        <div
+          className="absolute top-0.5 bottom-0.5 left-0.5 rounded-full bg-neutral-900 shadow-sm dark:bg-white/[0.14] dark:border dark:border-white/[0.16] dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)] transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none"
+          style={{
+            width: "calc((100% - 4px) / 4)",
+            transform: `translateX(${activeIndex * 100}%)`,
+          }}
+        />
 
         {navLinks.map((link) => {
           const isActive = currentPath === link.href;
@@ -166,18 +179,19 @@ export default function BottomNav() {
                   window.scrollTo({ top: 0, behavior: "instant" });
                 }
               }}
-              className={`relative flex items-center transition-all duration-200 rounded-full outline-none focus:outline-none select-none ${
-                isActive
-                  ? "bg-neutral-900 text-white shadow-sm dark:bg-white/[0.12] dark:text-white dark:border dark:border-white/[0.16] dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)] px-3.5 py-2 font-semibold text-xs gap-1.5 scale-100"
-                  : "text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100 dark:text-zinc-400 dark:hover:text-zinc-200 dark:hover:bg-white/[0.05] p-2.5 scale-95 active:scale-90"
-              }`}
+              className="relative z-10 flex-1 h-[38px] flex items-center justify-center outline-none focus:outline-none select-none group"
+              aria-label={link.label}
+              title={link.label}
             >
-              {link.icon}
-              {isActive && (
-                <span className="whitespace-nowrap tracking-tight animate-fade-in-up">
-                  {link.label}
-                </span>
-              )}
+              <div
+                className={`transition-all duration-200 ${
+                  isActive
+                    ? "text-white scale-110"
+                    : "text-neutral-500 hover:text-neutral-900 dark:text-zinc-400 dark:hover:text-zinc-200 scale-95 opacity-70 group-hover:opacity-100"
+                }`}
+              >
+                {link.icon}
+              </div>
             </Link>
           );
         })}

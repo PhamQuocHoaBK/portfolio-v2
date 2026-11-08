@@ -2,47 +2,39 @@
 
 import { useLocale } from "next-intl";
 import { useRouter, usePathname } from "@/i18n/routing";
-import { useTransition } from "react";
+import { useTransition, useState, useEffect } from "react";
 
 export default function LanguageSwitcher() {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
+  const [currentLocale, setCurrentLocale] = useState(locale);
 
-  const handleLanguageChange = (newLocale: "en" | "vi") => {
-    if (newLocale === locale) return;
+  useEffect(() => {
+    setCurrentLocale(locale);
+  }, [locale]);
+
+  const toggleLanguage = () => {
+    const nextLocale = (currentLocale === "en" ? "vi" : "en") as "en" | "vi";
+    setCurrentLocale(nextLocale);
     startTransition(() => {
-      router.replace(pathname, { locale: newLocale });
+      router.replace(pathname, { locale: nextLocale });
     });
   };
 
   return (
-    <div className="inline-flex items-center p-0.5 rounded-full bg-secondary/80 border border-border/60 text-xs font-semibold tracking-wider">
-      <button
-        onClick={() => handleLanguageChange("en")}
-        disabled={isPending}
-        className={`px-2.5 py-1 rounded-full transition-all duration-200 outline-none focus:outline-none ring-0 focus:ring-0 select-none ${
-          locale === "en"
-            ? "bg-foreground text-background shadow-sm"
-            : "text-foreground/50 hover:text-foreground"
-        }`}
-        aria-label="English"
-      >
-        EN
-      </button>
-      <button
-        onClick={() => handleLanguageChange("vi")}
-        disabled={isPending}
-        className={`px-2.5 py-1 rounded-full transition-all duration-200 outline-none focus:outline-none ring-0 focus:ring-0 select-none ${
-          locale === "vi"
-            ? "bg-foreground text-background shadow-sm"
-            : "text-foreground/50 hover:text-foreground"
-        }`}
-        aria-label="Tiếng Việt"
-      >
-        VI
-      </button>
-    </div>
+    <button
+      type="button"
+      onClick={toggleLanguage}
+      disabled={isPending}
+      className="flex h-9 w-9 items-center justify-center rounded-full text-foreground/70 hover:bg-secondary hover:text-foreground transition-all hover:scale-105 active:scale-95 duration-150 outline-none focus:outline-none ring-0 focus:ring-0 select-none font-bold text-xs tracking-wider"
+      aria-label={`Switch to ${currentLocale === "en" ? "Vietnamese" : "English"}`}
+      title={currentLocale === "en" ? "Chuyển sang Tiếng Việt" : "Switch to English"}
+    >
+      <span className="transition-transform duration-150">
+        {currentLocale === "en" ? "EN" : "VI"}
+      </span>
+    </button>
   );
 }

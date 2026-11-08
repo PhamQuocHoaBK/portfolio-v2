@@ -115,19 +115,28 @@ export default function ContactPage() {
             ></textarea>
           </div>
 
-          <div>
+          <div className="flex justify-end">
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-4 rounded-xl bg-primary text-primary-foreground font-bold hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 active:translate-y-0 transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="group/btn shrink-0 flex items-center justify-center gap-2 text-xs font-semibold px-4 py-2 rounded-full bg-card border border-border text-foreground hover:bg-secondary transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm"
             >
               {isSubmitting ? (
                 <>
-                  <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                  {t("sending")}
+                  <div className="w-3.5 h-3.5 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                  <span>{t("sending")}</span>
                 </>
               ) : (
-                t("send")
+                <>
+                  <span>{t("send")}</span>
+                  <svg
+                    className="w-3.5 h-3.5 shrink-0 opacity-80 group-hover/btn:opacity-100 group-hover/btn:translate-x-0.5 transition-all"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+                  </svg>
+                </>
               )}
             </button>
           </div>

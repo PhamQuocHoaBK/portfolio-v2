@@ -225,7 +225,7 @@ export default function AboutSection() {
         {/* Technical Skills Section */}
         <h2 className="text-xl font-bold tracking-tight mb-4 text-foreground">{t("skills")}</h2>
 
-        <div className="relative w-full overflow-hidden rounded-2xl border border-primary/20 bg-card/30 backdrop-blur-sm">
+        <div className="relative w-full overflow-hidden rounded-2xl bg-card/30 backdrop-blur-sm">
           {/* Animated Stars Background - Shared */}
           <div className="absolute inset-0 z-0">
             {[...Array(20)].map((_, i) => (

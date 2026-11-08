@@ -8,6 +8,10 @@ import LanguageSwitcher from "./LanguageSwitcher";
 export default function Header() {
   const [isDark, setIsDark] = useState(() => {
     if (typeof window !== "undefined") {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme) {
+        return savedTheme === "dark";
+      }
       return document.documentElement.classList.contains("dark");
     }
     return true;
@@ -18,6 +22,8 @@ export default function Header() {
     }
     return false;
   });
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const headerRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
   const t = useTranslations("header");
@@ -29,13 +35,41 @@ export default function Header() {
     { href: "/contact", label: t("contact") },
   ];
 
+  // Restore saved theme on client mount
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "light") {
+      setIsDark(false);
+      document.documentElement.classList.remove("dark");
+    } else if (savedTheme === "dark") {
+      setIsDark(true);
+      document.documentElement.classList.add("dark");
+    }
+  }, []);
+
+  // Mobile: auto-hide header when scrolling down, show when scrolling up
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      const currentScrollY = window.scrollY;
+      setIsScrolled(currentScrollY > 10);
+
+      if (currentScrollY > lastScrollY && currentScrollY > 70) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+      setLastScrollY(currentScrollY);
     };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [lastScrollY]);
+
+  // Always show header on page transition
+  useEffect(() => {
+    setIsVisible(true);
+    setLastScrollY(0);
+  }, [pathname]);
 
   const toggleTheme = () => {
     const nextDark = !isDark;
@@ -52,7 +86,9 @@ export default function Header() {
   return (
     <header
       ref={headerRef}
-      className={`sticky top-0 z-40 transition-[background-color,border-color,box-shadow] duration-200 ${
+      className={`sticky top-0 z-40 transition-[transform,background-color,border-color,box-shadow] duration-300 ease-out ${
+        isVisible ? "translate-y-0" : "-translate-y-full md:translate-y-0"
+      } ${
         isScrolled
           ? "bg-card/80 backdrop-blur-xl border-b border-border/50 shadow-sm"
           : "bg-transparent border-b border-transparent"
@@ -112,15 +148,17 @@ export default function Header() {
           </nav>
 
           {/* Actions - Right Side */}
-          <div className="flex items-center gap-2 md:gap-3 w-48 justify-end relative z-20">
+          <div className="flex items-center gap-1.5 sm:gap-2 w-48 justify-end relative z-20">
             {/* Language Change - Always visible */}
             <LanguageSwitcher />
 
             {/* Theme Toggle - Desktop & Mobile */}
             <button
+              type="button"
               onClick={toggleTheme}
-              className="flex rounded-full p-2 text-foreground/70 hover:bg-secondary hover:text-foreground transition-colors hover:scale-105 active:scale-95 duration-150 outline-none focus:outline-none ring-0 focus:ring-0 select-none"
+              className="flex h-9 w-9 items-center justify-center rounded-full text-foreground/70 hover:bg-secondary hover:text-foreground transition-all hover:scale-105 active:scale-95 duration-150 outline-none focus:outline-none ring-0 focus:ring-0 select-none"
               aria-label="Toggle theme"
+              title={isDark ? "Switch to Light mode" : "Switch to Dark mode"}
             >
               {isDark ? <SunIcon /> : <MoonIcon />}
             </button>
